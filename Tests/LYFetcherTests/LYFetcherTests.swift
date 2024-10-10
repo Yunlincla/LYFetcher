@@ -1,6 +1,6 @@
 //
 //  LYFetcherTests.swift
-//  
+//  LYFetcherTests
 //
 //  Created by 張居正 on 2024/10/5.
 //
@@ -32,7 +32,15 @@ final class LYFetcherTests: XCTestCase {
     func testFetchAllLegislatorInfo() throws {
         print(FetchAllLegislatorInfo())
     }
-
+    
+    func testAllMeetingTypeName() throws {
+        // 列出近半年有幾種影片類型
+        let url = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=113/02/01&meetingDateE=113/10/31&meetingTime=&legislatorName=&fileType=json")!
+        let data = try! FetchData(LegislatorSpeech.self, from: url).dataList
+        print(Set(data.map { $0.meetingTypeName }))
+        // result: ["社會福利及衛生環境委員會", "院會", "全院委員會", "教育及文化委員會", "交通委員會", "經濟委員會", "財政委員會", "內政委員會", "司法及法制委員會", "外交及國防委員會", "程序委員會"]
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

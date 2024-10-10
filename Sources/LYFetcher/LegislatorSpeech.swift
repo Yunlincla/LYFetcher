@@ -33,8 +33,6 @@ public func FetchNewestSpeech() -> [LegislatorSpeech] {
     let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)!
     // 將三十日前、今日套進URL
     let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=\(rocDateFormatter.string(from: thirtyDaysAgo))&meetingDateE=\(rocDateFormatter.string(from: currentDate))&meetingTime=&legislatorName=&fileType=json")!
-    // 抓取資料 
-    let jsonContent = try! Data(contentsOf: targetURL)
-    let data = try! JSONDecoder().decode(DataList<LegislatorSpeech>.self, from: jsonContent)
-    return data.dataList
+    // 抓取資料
+    return try! FetchData(LegislatorSpeech.self, from: targetURL).dataList
 }

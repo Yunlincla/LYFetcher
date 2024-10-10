@@ -24,7 +24,6 @@ public struct Legislator: Codable {
 /// 抓取最新的立法委員資料
 public func FetchAllLegislatorInfo() -> [Legislator] {
     let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID9Action.action?name=&sex=&party=&partyGroup=&areaName=&committee=&fileType=json")!
-    let jsonContent = try! Data(contentsOf: targetURL)
-    let data = try! JSONDecoder().decode(DataList<Legislator>.self, from: jsonContent)
+    let data = try! FetchData(Legislator.self, from: targetURL)
     return data.dataList.filter { $0.leaveFlag == "否" }
 }
