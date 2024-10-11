@@ -33,6 +33,10 @@ final class LYFetcherTests: XCTestCase {
         print(FetchAllLegislatorInfo())
     }
     
+    func testFetchFullVideoInfo() throws {
+        print(FetchNewestMeeting())
+    }
+    
     func testAllMeetingTypeName() throws {
         // 列出近半年有幾種影片類型
         let url = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=113/02/01&meetingDateE=113/10/31&meetingTime=&legislatorName=&fileType=json")!
