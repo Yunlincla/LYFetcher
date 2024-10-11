@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 資料集：當屆委員資料
 // API文件詳情請參考：https://data.ly.gov.tw/getds.action?id=9
 
 /// 立法委員資料抓取基底結構

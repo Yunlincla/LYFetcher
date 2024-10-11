@@ -7,6 +7,9 @@
 
 import Foundation
 
+// 資料集：委員發言片段相關影片資訊
+// API文件詳情請參考：https://data.ly.gov.tw/getds.action?id=148
+
 /// 委員發言資料
 public struct LegislatorSpeech: Codable {
     public var term: String
@@ -28,11 +31,8 @@ public struct LegislatorSpeech: Codable {
 
 /// 抓取近三十天的委員發言資料
 public func FetchNewestSpeech() -> [LegislatorSpeech] {
-    // 使用 Calendar 來計算 30 天前的日期
-    let currentDate = Date()
-    let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)!
     // 將三十日前、今日套進URL
-    let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=\(rocDateFormatter.string(from: thirtyDaysAgo))&meetingDateE=\(rocDateFormatter.string(from: currentDate))&meetingTime=&legislatorName=&fileType=json")!
+    let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=\(rocDateFormatter.string(from: thirtyDaysAgo))&meetingDateE=\(rocDateFormatter.string(from: Date()))&meetingTime=&legislatorName=&fileType=json")!
     // 抓取資料
     return try! FetchData(LegislatorSpeech.self, from: targetURL).dataList
 }
