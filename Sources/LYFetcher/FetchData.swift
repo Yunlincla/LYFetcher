@@ -21,10 +21,10 @@ public struct DataBase<Object>: Codable where Object: Codable {
 ///   - targetURL: 要抓取資料的URL。
 /// - Throws: 若發生錯誤則丟出`FetchDataError`。
 /// - Returns: 立法院所回傳的基底結構。
-public func FetchData<Object: Codable>(_ type: Object.Type, from targetURL: URL) throws -> DataBase<Object> {
+public func FetchData<Object: Codable>(_ type: Object.Type, from targetURL: URL) async throws -> DataBase<Object> {
     // 抓取資料
     do {
-        let jsonContent = try Data(contentsOf: targetURL)
+        let jsonContent = try await URLSession.shared.data(from: targetURL).0
         let data = try JSONDecoder().decode(DataBase<Object>.self, from: jsonContent)
         return data
     } catch is DecodingError {
