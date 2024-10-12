@@ -20,6 +20,17 @@ public struct Legislator: Codable, Hashable {
     public var areaName: String
     public var committee: String
     public var leaveFlag: String
+
+    /// Initializer 
+    public init(term: String = "", name: String = "", party: String = "", partyGroup: String = "", areaName: String = "", committee: String = "", leaveFlag: String = "") {
+        self.term = term
+        self.name = name
+        self.party = party
+        self.partyGroup = partyGroup
+        self.areaName = areaName
+        self.committee = committee
+        self.leaveFlag = leaveFlag
+    }
 }
 
 /// 抓取最新的立法委員資料

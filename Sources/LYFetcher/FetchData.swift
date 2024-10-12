@@ -13,6 +13,11 @@ import Foundation
 /// 泛型`Object`為要抓取的物件類型，請務必先按照立法院所提供之API對應的資料結構定義，並繼承`Codable`。
 public struct DataBase<Object>: Codable where Object: Codable {
     public var dataList: [Object]
+
+    /// Initializer
+    public init(dataList: [Object] = []) {
+        self.dataList = dataList
+    }
 }
 
 /// 透過指定URL，與要抓取的物件類型，來讀取資料。

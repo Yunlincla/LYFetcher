@@ -30,6 +30,25 @@ public struct LegislatorSpeech: Codable, Hashable, Identifiable, VideoInfo {
 
     /// Identifiable protocol Conformance
     public var id: String { videoUrl }
+
+    /// Initializer
+    public init(term: String = "", sessionPeriod: String = "", meetingDate: String = "", meetingTime: String = "", meetingTypeName: String = "", meetingName: String = "", meetingContent: String = "", legislatorName: String = "", areaName: String = "", speechStartTime: String = "", speechEndTime: String = "", speechRecordUrl: String = "", videoLength: String = "", videoUrl: String = "", selectTerm: String = "") {
+        self.term = term
+        self.sessionPeriod = sessionPeriod
+        self.meetingDate = meetingDate
+        self.meetingTime = meetingTime
+        self.meetingTypeName = meetingTypeName
+        self.meetingName = meetingName
+        self.meetingContent = meetingContent
+        self.legislatorName = legislatorName
+        self.areaName = areaName
+        self.speechStartTime = speechStartTime
+        self.speechEndTime = speechEndTime
+        self.speechRecordUrl = speechRecordUrl
+        self.videoLength = videoLength
+        self.videoUrl = videoUrl
+        self.selectTerm = selectTerm
+    }
 }
 
 /// 抓取近三十天的委員發言資料
