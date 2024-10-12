@@ -2,7 +2,7 @@
 //  VideoInfo.swift
 //  LYFetcher
 //
-//  Created by 張居正 on 2024/10/11.
+//  Created by Yunlincla on 2024/10/11.
 //
 
 import Foundation
