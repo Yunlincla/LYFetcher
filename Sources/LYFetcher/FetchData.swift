@@ -12,7 +12,7 @@ import Foundation
 /// 在透過`FetchData(_ type:, from:)`抓取資料時，立法院所回傳的基底結構。
 /// 泛型`Object`為要抓取的物件類型，請務必先按照立法院所提供之API對應的資料結構定義，並繼承`Codable`。
 public struct DataBase<Object>: Codable where Object: Codable {
-    var dataList: [Object]
+    public var dataList: [Object]
 }
 
 /// 透過指定URL，與要抓取的物件類型，來讀取資料。

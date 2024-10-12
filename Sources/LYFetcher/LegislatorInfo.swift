@@ -11,7 +11,7 @@ import Foundation
 // API文件詳情請參考：https://data.ly.gov.tw/getds.action?id=9
 
 /// 立法委員資料抓取基底結構
-public struct Legislator: Codable {
+public struct Legislator: Codable, Hashable {
     // 注意：此struct只有部分欄位，完整欄位請參考API文件
     public var term: String
     public var name: String
