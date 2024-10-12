@@ -37,6 +37,10 @@ final class LYFetcherTests: XCTestCase {
         print(await FetchNewestMeeting())
     }
     
+    func testParseIvodURL() async throws {
+        print(await ParseIvodURL(url: URL(string: "https://ivod.ly.gov.tw/Play/Clip/1M/152955")!))
+    }
+    
     func testAllMeetingTypeName() async throws {
         // 列出近半年有幾種影片類型
         let url = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=113/02/01&meetingDateE=113/10/31&meetingTime=&legislatorName=&fileType=json")!

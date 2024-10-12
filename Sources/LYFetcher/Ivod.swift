@@ -10,9 +10,9 @@ import Foundation
 /// 讀取指定Ivod網頁的URL，解析出Ivod的m3u8的URL
 /// - Parameter url: 要讀取的Ivod網頁
 /// - Returns: 在Ivod網頁中讀取到的m3u8的URL
-public func ParseIvodURL(url: URL) -> URL {
+public func ParseIvodURL(url: URL) async -> URL {
     // 讀取URL的HTML
-    let html = try! String(contentsOf: url)
+    let html = String(data: try! await URLSession.shared.data(from: url).0, encoding: .utf8)!
     // 以正則表達式「readyPlayer\("([^"]*).m3u8」過濾html內容
     let target = try! Regex(#"readyPlayer\("([^"]*).m3u8"#)
     if let results = html.firstMatch(of: target) {
