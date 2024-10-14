@@ -40,7 +40,9 @@ public func FetchData<Object: Codable>(_ type: Object.Type, from targetURL: URL)
 }
 
 /// 在向立法院抓取資料時，可能發生的錯誤
-enum FetchDataError: Error {
+public enum FetchDataError: Error {
     case urlFetchingError
+    case encodingError
     case decodingError
+    case m3u8NotFound
 }

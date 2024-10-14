@@ -34,8 +34,7 @@ public struct Legislator: Codable, Hashable {
 }
 
 /// 抓取最新的立法委員資料
-public func FetchAllLegislatorInfo() async -> [Legislator] {
+public func FetchAllLegislatorInfo() async throws -> [Legislator] {
     let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID9Action.action?name=&sex=&party=&partyGroup=&areaName=&committee=&fileType=json")!
-    let data = try! await FetchData(Legislator.self, from: targetURL)
-    return data.dataList.filter { $0.leaveFlag == "否" }
+    return try await FetchData(Legislator.self, from: targetURL).dataList.filter { $0.leaveFlag == "否" }
 }

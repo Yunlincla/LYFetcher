@@ -51,10 +51,10 @@ public struct LegislatorSpeech: Codable, Hashable, Identifiable, VideoInfo {
     }
 }
 
-/// 抓取近三十天的委員發言資料
-public func FetchNewestSpeech() async -> [LegislatorSpeech] {
+/// 抓取近一千筆的委員發言資料
+public func FetchNewestSpeech() async throws -> [LegislatorSpeech] {
     // 將三十日前、今日套進URL
     let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID148Action.action?term=&sessionPeriod=&meetingDateS=\(rocDateFormatter.string(from: thirtyDaysAgo))&meetingDateE=\(rocDateFormatter.string(from: Date()))&meetingTime=&legislatorName=&fileType=json")!
     // 抓取資料
-    return try! await FetchData(LegislatorSpeech.self, from: targetURL).dataList
+    return try await FetchData(LegislatorSpeech.self, from: targetURL).dataList
 }
