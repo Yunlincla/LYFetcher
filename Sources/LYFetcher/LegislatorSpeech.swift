@@ -11,7 +11,7 @@ import Foundation
 // API文件詳情請參考：https://data.ly.gov.tw/getds.action?id=148
 
 /// 委員發言資料
-public struct LegislatorSpeech: Codable, Hashable, Identifiable, VideoInfo {
+public struct LegislatorSpeech: Codable, Hashable, Identifiable, Sendable, VideoInfo {
     public var term: String
     public var sessionPeriod: String
     public var meetingDate: String

@@ -11,7 +11,7 @@ import Foundation
 // API文件詳情請參考：https://data.ly.gov.tw/getds.action?id=143
 
 /// 會議完整資訊資料抓取基底結構
-public struct FullMeetingVideo: Codable, Hashable, Identifiable, VideoInfo {
+public struct FullMeetingVideo: Codable, Hashable, Identifiable, Sendable, VideoInfo {
     public var term: String = ""
     public var sessionPeriod: String = ""
     public var meetingDate: String = ""
