@@ -40,6 +40,6 @@ public struct FullMeetingVideo: Codable, Hashable, Identifiable, Sendable, Video
 }
 
 public func FetchNewestMeeting() async throws -> [FullMeetingVideo] {
-    let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID143Action.action?term=&sessionPeriod=&meetingDateS=\(rocDateFormatter.string(from: thirtyDaysAgo))&meetingDateE=\(rocDateFormatter.string(from: Date()))&fileType=json")!
+    let targetURL = URL(string: "https://data.ly.gov.tw/odw/ID401Action.action?term=&sessionPeriod=&meetingDateS=\(rocDateFormatter.string(from: thirtyDaysAgo))&meetingDateE=\(rocDateFormatter.string(from: Date()))&fileType=json")!
     return try await FetchData(FullMeetingVideo.self, from: targetURL).dataList
 }
